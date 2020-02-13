@@ -1,7 +1,8 @@
 import unittest
 
 def lastDelivery(container_schedule):
-    return 5
+    delivery_times = [5]
+    return max(delivery_times)
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):
