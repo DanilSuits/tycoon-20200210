@@ -2,7 +2,9 @@ import unittest
 
 def lastDelivery(container_schedule):
     delivery_times = []
-    arrival_at_A = 5
+    departure_from_port = 1
+    duration_from_port_to_A = 4
+    arrival_at_A = departure_from_port + duration_from_port_to_A
     delivery_time = arrival_at_A
     delivery_times.append(delivery_time)
     return max(delivery_times)
