@@ -2,7 +2,10 @@ import unittest
 
 def lastDelivery(container_schedule):
     delivery_times = []
-    departure_from_port = 1
+    duration_from_factory_to_port = 1
+    departure_from_factory = 0
+    arrival_at_port = departure_from_factory + duration_from_factory_to_port
+    departure_from_port = arrival_at_port
     duration_from_port_to_A = 4
     arrival_at_A = departure_from_port + duration_from_port_to_A
     delivery_time = arrival_at_A
