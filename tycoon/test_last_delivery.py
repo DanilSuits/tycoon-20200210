@@ -1,14 +1,21 @@
 import unittest
 
 def lastDelivery(container_schedule):
+    DURATION_FROM_FACTORY_TO_PORT = 1
+    DURATION_FROM_PORT_TO_A = 4
+
     delivery_times = []
-    duration_from_factory_to_port = 1
+
+    # Leg: factory to port
     departure_from_factory = 0
-    arrival_at_port = departure_from_factory + duration_from_factory_to_port
+    arrival_at_port = departure_from_factory + DURATION_FROM_FACTORY_TO_PORT
+
+    # Leg: port to A
     departure_from_port = arrival_at_port
-    duration_from_port_to_A = 4
-    arrival_at_A = departure_from_port + duration_from_port_to_A
+    arrival_at_A = departure_from_port + DURATION_FROM_PORT_TO_A
+
     delivery_time = arrival_at_A
+
     delivery_times.append(delivery_time)
     return max(delivery_times)
 
