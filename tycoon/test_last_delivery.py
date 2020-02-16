@@ -8,7 +8,7 @@ def lastDelivery(container_schedule):
     delivery_times = []
 
     if "B" == container_schedule:
-        delivery_times.append(99) # TEST CALIBRATION
+        delivery_times.append(5)
         
     # Leg: factory to port
     departure_from_factory = 0
