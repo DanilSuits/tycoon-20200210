@@ -4,11 +4,16 @@ from parameterized import parameterized
 def lastDelivery(container_schedule):
     DURATION_FROM_FACTORY_TO_PORT = 1
     DURATION_FROM_PORT_TO_A = 4
+    DURATION_FROM_FACTORY_TO_B = 5
 
     delivery_times = []
 
     if "B" == container_schedule:
-        delivery_times.append(5)
+        # Leg: factory to B
+        departure_from_factory = 0
+        arrival_at_b = departure_from_factory + DURATION_FROM_FACTORY_TO_B
+        delivery_time = arrival_at_b
+        delivery_times.append(delivery_time)
         
     # Leg: factory to port
     departure_from_factory = 0
