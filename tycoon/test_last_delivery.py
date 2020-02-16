@@ -1,4 +1,5 @@
 import unittest
+from parameterized import parameterized
 
 def lastDelivery(container_schedule):
     DURATION_FROM_FACTORY_TO_PORT = 1
@@ -20,10 +21,13 @@ def lastDelivery(container_schedule):
     return max(delivery_times)
 
 class MyTestCase(unittest.TestCase):
-    def test_something(self):
+    @parameterized.expand([
+        ["A", 5]
+    ])
+    def test_something(self, container_schedule, last_delivery):
         self.assertEqual(
-            5,
-            lastDelivery("A")
+            last_delivery,
+            lastDelivery(container_schedule)
         )
 
 
