@@ -10,24 +10,26 @@ def lastDelivery(container_schedule):
 
     departure_from_factory = 0
 
-    destination = container_schedule[0]
+    ship_at_port = 0
 
-    if "B" == destination:
-        # Leg: factory to B
-        arrival_at_b = departure_from_factory + DURATION_FROM_FACTORY_TO_B
-        delivery_time = arrival_at_b
-        delivery_times.append(delivery_time)
-    else:
-        # Leg: factory to port
-        arrival_at_port = departure_from_factory + DURATION_FROM_FACTORY_TO_PORT
+    for destination in container_schedule:
+        if "B" == destination:
+            # Leg: factory to B
+            arrival_at_b = departure_from_factory + DURATION_FROM_FACTORY_TO_B
+            delivery_time = arrival_at_b
+            delivery_times.append(delivery_time)
+        else:
+            # Leg: factory to port
+            arrival_at_port = departure_from_factory + DURATION_FROM_FACTORY_TO_PORT
 
-        # Leg: port to A
-        departure_from_port = arrival_at_port
-        arrival_at_A = departure_from_port + DURATION_FROM_PORT_TO_A
+            # Leg: port to A
+            departure_from_port = max(arrival_at_port, ship_at_port)
+            arrival_at_A = departure_from_port + DURATION_FROM_PORT_TO_A
 
-        delivery_time = arrival_at_A
+            delivery_time = arrival_at_A
+            ship_at_port = arrival_at_A + DURATION_FROM_PORT_TO_A
 
-        delivery_times.append(delivery_time)
+            delivery_times.append(delivery_time)
 
     return max(delivery_times)
 
