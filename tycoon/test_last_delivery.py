@@ -40,6 +40,12 @@ def lastDelivery(container_schedule):
 
 class MyTestCase(unittest.TestCase):
     @parameterized.expand([
+        ["ABBBABAAABBB", 41],
+        ["AABABBAB", 29],
+        ["BBA", 15],
+        ["BAB",7],
+        ["AB", 5],
+        ["BB", 5],
         ["ABB", 7],
         ["AA", 13],
         ["B", 5],
