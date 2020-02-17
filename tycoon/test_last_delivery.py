@@ -9,7 +9,7 @@ def lastDelivery(container_schedule):
     delivery_times = []
 
 
-    ship_at_port = 0
+    ships_at_port = [0]
     trucks_at_factory = [0,0]
 
     for destination in container_schedule:
@@ -23,16 +23,18 @@ def lastDelivery(container_schedule):
             delivery_times.append(delivery_time)
             trucks_at_factory[0] = arrival_at_b + DURATION_FROM_FACTORY_TO_B
         else:
+
             # Leg: factory to port
             arrival_at_port = departure_from_factory + DURATION_FROM_FACTORY_TO_PORT
             trucks_at_factory[0] = arrival_at_port + DURATION_FROM_FACTORY_TO_PORT
 
             # Leg: port to A
-            departure_from_port = max(arrival_at_port, ship_at_port)
+            ships_at_port.sort()
+            departure_from_port = max(arrival_at_port, ships_at_port[0])
             arrival_at_A = departure_from_port + DURATION_FROM_PORT_TO_A
 
             delivery_time = arrival_at_A
-            ship_at_port = arrival_at_A + DURATION_FROM_PORT_TO_A
+            ships_at_port[0] = arrival_at_A + DURATION_FROM_PORT_TO_A
 
             delivery_times.append(delivery_time)
 
