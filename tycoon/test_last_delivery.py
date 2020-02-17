@@ -8,24 +8,25 @@ def lastDelivery(container_schedule):
 
     delivery_times = []
 
+    departure_from_factory = 0
+
     if "B" == container_schedule:
         # Leg: factory to B
-        departure_from_factory = 0
         arrival_at_b = departure_from_factory + DURATION_FROM_FACTORY_TO_B
         delivery_time = arrival_at_b
         delivery_times.append(delivery_time)
-        
-    # Leg: factory to port
-    departure_from_factory = 0
-    arrival_at_port = departure_from_factory + DURATION_FROM_FACTORY_TO_PORT
+    else:
+        # Leg: factory to port
+        arrival_at_port = departure_from_factory + DURATION_FROM_FACTORY_TO_PORT
 
-    # Leg: port to A
-    departure_from_port = arrival_at_port
-    arrival_at_A = departure_from_port + DURATION_FROM_PORT_TO_A
+        # Leg: port to A
+        departure_from_port = arrival_at_port
+        arrival_at_A = departure_from_port + DURATION_FROM_PORT_TO_A
 
-    delivery_time = arrival_at_A
+        delivery_time = arrival_at_A
 
-    delivery_times.append(delivery_time)
+        delivery_times.append(delivery_time)
+
     return max(delivery_times)
 
 class MyTestCase(unittest.TestCase):
