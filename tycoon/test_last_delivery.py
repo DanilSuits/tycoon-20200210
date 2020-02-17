@@ -33,6 +33,7 @@ def lastDelivery(container_schedule):
 
 class MyTestCase(unittest.TestCase):
     @parameterized.expand([
+        ["AA", 13],
         ["B", 5],
         ["A", 5]
     ])
