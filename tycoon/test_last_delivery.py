@@ -10,7 +10,9 @@ def lastDelivery(container_schedule):
 
     departure_from_factory = 0
 
-    if "B" == container_schedule:
+    destination = container_schedule[0]
+
+    if "B" == destination:
         # Leg: factory to B
         arrival_at_b = departure_from_factory + DURATION_FROM_FACTORY_TO_B
         delivery_time = arrival_at_b
